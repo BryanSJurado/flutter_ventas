@@ -37,7 +37,7 @@ class ClientHomePage extends StatelessWidget{
             children: con.categorias.map( (Categoria categoria) {
 
               return FutureBuilder(
-                  future: con.getProductos(),
+                  future: con.getProductos(categoria.idCat ?? '13'),
                   builder: (context, AsyncSnapshot<List<Producto>> snapshot){
 
                     if(snapshot.hasData){
