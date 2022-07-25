@@ -5,26 +5,28 @@ import 'package:path/path.dart';
 
 import '../Enviroment/environment.dart';
 import '../models/producto.dart';
+import '../models/response_api.dart';
 
 class ProductsProvider extends GetConnect{
   String url = Environment.API_URL + 'api/Producto';
   User userSession = User.fromJson(GetStorage().read('user') ?? {});
 
-  Future <List<Producto>> findProductos(String idCategory) async {
+  Future <List<Producto>> findProductos() async {
+
     Response response = await get(
-      '$url/ ',
+      '$url',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': userSession.token ?? ''
-      }
+        'Authorization': 'Bearer ${userSession.token}',
+      },
     ); //Espera hasta que el servidor retorne la respuesta
 
     if(response.statusCode == 401){
       Get.snackbar('Petición Denegada', 'El usuario no tiene autorización');
       return [];
     }
-
-    List<Producto> productos = Producto.fromJsonList(response.body);
+    ResponseApi responseApi = ResponseApi.fromJson(response.body);
+    List<Producto> productos = Producto.fromJsonList(responseApi.data);
     return productos;
   }
 

@@ -8,7 +8,7 @@ class ResponseApi {
 
   int? exito;
   String? mensaje;
-  Object? data;
+  dynamic data;
 
   ResponseApi({
     this.exito,

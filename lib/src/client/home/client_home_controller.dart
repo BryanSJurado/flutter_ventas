@@ -14,11 +14,11 @@ class ClientHomeController extends GetxController {
     categorias = [
       Categoria(idCat: '1', nomCat: 'Categoría1')
     ];
-    //categorias.clear();
+    categorias.clear();
     categorias.addAll(categorias);
   }
 
-  Future<List<Producto>> getProductos (String idCategory) async{
-    return await productsProvider.findProductos(idCategory);
+  Future<List<Producto>> getProductos () async{
+    return await productsProvider.findProductos();
   }
 }

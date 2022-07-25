@@ -6,12 +6,12 @@ String productoToJson(Producto data) => json.encode(data.toJson());
 
 class Producto {
 
-  String? idPro;
+  int? idPro;
   String? nomPro;
-  String? preUniPro;
+  double? preUniPro;
   String? imgPro;
   String? marPro;
-  String? stockPro;
+  int? stockPro;
 
   Producto({
     this.idPro,
@@ -33,11 +33,18 @@ class Producto {
 
   static List<Producto> fromJsonList(List<dynamic> jsonList){
     List<Producto> toList = [];
-
+    Producto producto = new Producto();
+    for(int i = 0; i <= jsonList.length-1; i++){
+      producto = Producto.fromJson(jsonList[i]);
+      toList.add(producto);
+    }
+    /*
     jsonList.forEach((item) {
       Producto producto = Producto.fromJson(item);
       toList.add(producto);
+      print(toList);
     });
+     */
     return toList;
   }
 
