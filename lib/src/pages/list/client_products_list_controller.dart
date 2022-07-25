@@ -17,7 +17,9 @@ class ClientProductsListController extends GetxController {
   }
 
   void getCategorias() async {
-    categorias = [ new Categoria(idCat: '1', nomCat: 'Categoría1')];
+    categorias = [ new Categoria(
+                                  idCat: '1',
+                                  nomCat: 'Categoría1')];
     //categorias.addAll(categorias);
   }
 
