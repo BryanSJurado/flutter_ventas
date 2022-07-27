@@ -12,6 +12,11 @@ class ClientOrdersCreatePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Container(
+        color: Color.fromRGBO(245, 245, 245, 1),
+        height: 100,
+        child: _totalToPay(context),
+      ),
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: Colors.black
@@ -34,6 +39,44 @@ class ClientOrdersCreatePage extends StatelessWidget {
     );
   }
 
+  Widget _totalToPay(BuildContext context){
+    return Column(
+      children: [
+        Divider(height: 1, color: Colors.grey,),
+        Container(
+          margin: EdgeInsets.only(left: 20, top: 25),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                  'TOTAL: \$0.0',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 17
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 30),
+                //width: MediaQuery.of(context).size.width*0.6,
+                child: ElevatedButton(
+                    onPressed: (){},
+                    style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.all(15)
+                    ),
+                    child: Text(
+                        'CONFIRMAR ORDEN',
+                        style: TextStyle(
+                            color: Colors.black
+                        )
+                    )),
+              )
+            ],
+          ),
+        )
+      ],
+    );
+  }
+
   Widget _cardProduct(Producto producto){
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -44,7 +87,7 @@ class ClientOrdersCreatePage extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(producto.nomPro ?? '',
+              Text('${producto.nomPro}' + '    ' + '${producto.preUniPro.toString()}',
               style: TextStyle(
                 fontWeight: FontWeight.bold
               ),),
@@ -78,7 +121,7 @@ class ClientOrdersCreatePage extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 10),
       child: Text(
-        '${producto.preUniPro! * producto.quantity!}',
+        '\$${producto.preUniPro ?? 0 * producto.quantity! }',
         style: TextStyle(
           color: Colors.grey,
           fontWeight: FontWeight.bold
