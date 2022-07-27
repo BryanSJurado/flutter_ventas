@@ -31,7 +31,6 @@ class ClientProductDetailController extends GetxController{
           print('Producto: ${p.toJson()}');
         });
       }
-
     }
   }
 
