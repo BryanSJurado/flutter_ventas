@@ -11,7 +11,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: Container(
         height: 50,
-        //child: _textDontHaveAccount(),
+        child: _textDontHaveAccount(),
       ),
       body: Stack( //Posicionar elementos uno encuma del otro
         children: [
@@ -134,7 +134,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-/*
+
   Widget _textDontHaveAccount(){
     return Row( //Ubicar elementos uno a lado del otro
       mainAxisAlignment: MainAxisAlignment.center,
@@ -162,7 +162,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-*/
+
   //Public
   Widget _imageCover(){
     return SafeArea(

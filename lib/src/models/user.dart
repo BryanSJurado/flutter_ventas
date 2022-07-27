@@ -1,5 +1,59 @@
 import 'dart:convert';
 
+import 'dart:convert';
+
+import 'package:get/get.dart';
+
+User userFromJson(String str) => User.fromJson(json.decode(str));
+
+String userToJson(User data) => json.encode(data.toJson());
+
+class User {
+
+  String? emailUsu;
+  String? passUsu;
+  String? nomUsu;
+  String? telUsu;
+  String? dirUsu;
+  String? cedUsu;
+  String? image;
+  String? token;
+
+  User({
+    this.emailUsu,
+    this.passUsu,
+    this.nomUsu,
+    this.telUsu,
+    this.dirUsu,
+    this.cedUsu,
+    this.image,
+    this.token
+  });
+
+  factory User.fromJson(Map<String, dynamic> json) => User(
+    emailUsu: json["emailUsu"],
+    passUsu: json["passUsu"],
+    nomUsu: json["nomUsu"],
+    telUsu: json["telUsu"],
+    dirUsu: json["dirUsu"],
+    cedUsu: json["cedUsu"],
+    image: json["image"],
+    token: json['token']
+  );
+
+  Map<String, dynamic> toJson() => {
+    "emailUsu": emailUsu,
+    "passUsu": passUsu,
+    "nomUsu": nomUsu,
+    "telUsu": telUsu,
+    "dirUsu": dirUsu,
+    "cedUsu": cedUsu,
+    "image": image,
+    "token": token
+  };
+}
+
+/*
 User uSerFromJson(String str) => User.fromJson(json.decode(str));
 
 String uSerToJson(User data) => json.encode(data.toJson());
@@ -40,7 +94,7 @@ class User {
     "image": image,
   };
 }
-
+*/
 
 
 /*

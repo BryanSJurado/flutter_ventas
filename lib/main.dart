@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
     return GetMaterialApp(
       title: 'Ventas',
       debugShowCheckedModeBanner: false,
-      initialRoute: user.email_Usu != null ? '/home' : '/',
+      initialRoute: user.emailUsu != null ? '/home' : '/',
       getPages: [
         GetPage(name: '/', page: () => LoginPage()),
         GetPage(name: '/register', page: () => RegisterPage()),

@@ -46,7 +46,7 @@ class RegisterPage extends StatelessWidget {
 
   Widget _boxForm(BuildContext context){
     return Container(
-      height: MediaQuery.of(context).size.height * 0.40,
+      height: MediaQuery.of(context).size.height * 0.65,
       margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.3, left: 50, right: 50 ),
       decoration: BoxDecoration(
           color: Colors.white,
@@ -62,15 +62,44 @@ class RegisterPage extends StatelessWidget {
         child: Column(
           children: [
             _textYourInfo(),
-            _textFieldEmail(),
+            _textFieldCedula(),
             _textFieldName(),
+            _textFieldEmail(),
             //_textFieldLastName(),
             _textFieldPhone(),
-            _textFieldDireccion()
-            //_textFieldPassword(),
-            //_textFieldConfirmPassword(),
-            //_buttonRegister()
+            _textFieldDireccion(),
+            _textFieldPassword(),
+            _textFieldConfirmPassword(),
+            _buttonRegister()
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _textFieldCedula(){
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 40),
+      child: TextField(
+        controller: con.cedulaController,
+        keyboardType: TextInputType.number,
+        decoration: InputDecoration(
+            hintText: 'Cédula',
+            prefixIcon: Icon(Icons.info_outline)
+        ),
+      ),
+    );
+  }
+
+  Widget _textFieldName(){
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 40),
+      child: TextField(
+        controller: con.nameController,
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+            hintText: 'Nombre',
+            prefixIcon: Icon(Icons.person)
         ),
       ),
     );
@@ -90,34 +119,6 @@ class RegisterPage extends StatelessWidget {
     );
   }
 
-  Widget _textFieldName(){
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 40),
-      child: TextField(
-        controller: con.nameController,
-        keyboardType: TextInputType.text,
-        decoration: InputDecoration(
-            hintText: 'Nombre',
-            prefixIcon: Icon(Icons.person)
-        ),
-      ),
-    );
-  }
-/*
-  Widget _textFieldLastName(){
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 40),
-      child: TextField(
-        controller: con.lastnameController,
-        keyboardType: TextInputType.text,
-        decoration: InputDecoration(
-            hintText: 'Apellido',
-            prefixIcon: Icon(Icons.person_outline)
-        ),
-      ),
-    );
-  }
-*/
   Widget _textFieldPhone(){
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 40),
@@ -136,17 +137,17 @@ class RegisterPage extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 40),
       child: TextField(
-        controller: con.phoneController,
-        keyboardType: TextInputType.phone,
+        controller: con.direccionController,
+        keyboardType: TextInputType.text,
         decoration: InputDecoration(
             hintText: 'Dirección',
-            prefixIcon: Icon(Icons.phone)
+            prefixIcon: Icon(Icons.home)
         ),
       ),
     );
   }
 
-/*
+
   Widget _textFieldPassword(){
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 40),
@@ -195,7 +196,7 @@ class RegisterPage extends StatelessWidget {
       ),
     );
   }
-*/
+
   Widget _imageUser(){
     return SafeArea(
       child: Container(

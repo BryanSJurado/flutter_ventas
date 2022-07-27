@@ -32,7 +32,7 @@ class ClientProfileInfoPage extends StatelessWidget {
 
   Widget _boxForm(BuildContext context){
     return Container(
-      height: MediaQuery.of(context).size.height * 0.40,
+      height: MediaQuery.of(context).size.height * 0.60,
       margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.3, left: 50, right: 50 ),
       decoration: BoxDecoration(
           color: Colors.white,
@@ -47,7 +47,9 @@ class ClientProfileInfoPage extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
+            _textYourInfo(),
             _textName(),
+            _textCedula(),
             _textEmail(),
             _textPhone(),
             _textDir()
@@ -116,9 +118,17 @@ class ClientProfileInfoPage extends StatelessWidget {
     );
   }
 
+  Widget _textCedula() {
+    return ListTile(
+      leading: Icon(Icons.info_outline),
+      title: Text('${con.user.cedUsu ?? ''}'),
+      subtitle: Text('Cédula del Usuario'),
+    );
+  }
+
   Widget _textDir() {
     return ListTile(
-      leading: Icon(Icons.directions),
+      leading: Icon(Icons.home),
       title: Text('${con.user.dirUsu ?? ''}'),
       subtitle: Text('Direccion del usuario'),
     );
@@ -128,9 +138,9 @@ class ClientProfileInfoPage extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 10),
       child: ListTile(
-        leading: Icon(Icons.email),
-        title: Text(con.user.email_Usu ?? ''),
-        subtitle: Text('Email'),
+        leading: Icon(Icons.mail),
+        title: Text(con.user.emailUsu ?? ''),
+        subtitle: Text('Correo'),
       ),
     );
   }

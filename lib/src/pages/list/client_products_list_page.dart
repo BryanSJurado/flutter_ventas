@@ -9,6 +9,7 @@ class ClientProductsListPage extends StatelessWidget{
   ClientProductsListController con = Get.put(ClientProductsListController());
   @override
   Widget build(BuildContext context){
+
     return DefaultTabController(
         length: con.categorias.length,
         child: Scaffold(
@@ -57,39 +58,54 @@ class ClientProductsListPage extends StatelessWidget{
   }
 
   Widget _cardProducto(Producto producto){
-    return Container(
-      margin: EdgeInsets.only(top: 15, left: 20, right: 20),
-        child: ListTile(
-          title: Text(producto.nomPro ?? ''),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 5),
-              Text('Marca: ' + producto.marPro.toString()),
-              SizedBox(height: 10),
-              Text(
-                'Precio: '+producto.preUniPro.toString(),
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold
+    return Column(
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 15, left: 20, right: 20),
+            child: ListTile(
+              title: Text(producto.nomPro ?? ''),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 5),
+                  Text(
+                    'Marca: ' + producto.marPro.toString(),
+                    maxLines: 2,
+                    style: TextStyle(
+                      fontSize: 13
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    'Precio: ' + '\$${producto.preUniPro.toString()}',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  SizedBox(height: 20)
+                ],
+              ),
+              trailing: Container(
+                height: 70,
+                width: 60,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: FadeInImage(
+                    image: producto.imgPro != null || producto.imgPro == null
+                          ? AssetImage('assets/img/no-image.png') as ImageProvider
+                          : NetworkImage(producto.imgPro!),  //AssetImage('assets/img/no-image.png') as ImageProvider,
+                    fit: BoxFit.cover,
+                    fadeInDuration: Duration(milliseconds: 50),
+                    placeholder: AssetImage('assets/img/no-image.png'),
+                  ),
                 ),
-              )
-            ],
-          ),
-          trailing: Container(
-            height: 70,
-            width: 70,
-            child: FadeInImage(
-              image: producto.imgPro != null || producto.imgPro == null
-                    ? AssetImage('assets/img/no-image.png') as ImageProvider
-                    : NetworkImage(producto.imgPro!),  //AssetImage('assets/img/no-image.png') as ImageProvider,
-              fit: BoxFit.cover,
-              fadeInDuration: Duration(milliseconds: 50),
-              placeholder: AssetImage('assets/img/no-image.png'),
+              ),
             ),
           ),
-        ),
-      );
+        Divider(height: 1, color: Colors.grey, indent: 40, endIndent: 40,)
+      ],
+    );
     }
 
   /*
