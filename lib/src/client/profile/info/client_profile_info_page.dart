@@ -16,6 +16,7 @@ class ClientProfileInfoPage extends StatelessWidget {
           _backgroundCover(context),
           _boxForm(context),
           _imageUser(context),
+          _buttonSignOut()
         ],
       ),
     );
@@ -153,6 +154,22 @@ class ClientProfileInfoPage extends StatelessWidget {
     );
   }
 
+  Widget _buttonSignOut(){
+    return SafeArea(
+        child: Container(
+          margin:  EdgeInsets.only(right: 20),
+          alignment: Alignment.topRight,
+          child: IconButton(
+            onPressed: () => con.signOut(),
+            icon: Icon(
+              Icons.power_settings_new,
+              color: Colors.white,
+              size: 30,
+            ),
+          ),
+        )
+    );
+  }
 
 
 }

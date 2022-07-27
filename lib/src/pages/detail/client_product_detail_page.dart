@@ -8,13 +8,18 @@ class ClientProductDetailPage extends StatelessWidget {
 
   Producto? producto;
 
-  ClientProductDetailController con = Get.put(ClientProductDetailController());
+  late ClientProductDetailController con;
+  var counter = 0.obs;
+  var price = 0.0.obs;
 
-  ClientProductDetailPage({@required this.producto});
+  ClientProductDetailPage({@required this.producto}){
+    con = Get.put(ClientProductDetailController());
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    con.checkIfProductsWasAdded(producto!, price, counter);
+    return Obx(() => Scaffold(
       bottomNavigationBar: Container(
         height: 100,
           child: _buttonsAddToBag()
@@ -26,11 +31,12 @@ class ClientProductDetailPage extends StatelessWidget {
             _imageSlideShow(context),
             _textNameProduct(),
             _textMarcaProduct(),
-            _textPrecioProduct()
+            _textPrecioProduct(),
+            _textStockProduct()
           ],
         ),
       ),
-    );
+    ));
   }
 
   Widget _textNameProduct(){
@@ -70,7 +76,7 @@ class ClientProductDetailPage extends StatelessWidget {
           child: Row(
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () => con.removeItem(producto!, price, counter),
                 child: Text(
                   '-',
                   style: TextStyle(
@@ -80,6 +86,7 @@ class ClientProductDetailPage extends StatelessWidget {
                 ),
                 style: ElevatedButton.styleFrom(
                     primary: Colors.white,
+                    minimumSize: Size(40, 37),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
@@ -91,7 +98,7 @@ class ClientProductDetailPage extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {},
                 child: Text(
-                  '0',
+                  '${counter.value}',
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 22
@@ -103,7 +110,7 @@ class ClientProductDetailPage extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () => con.addItem(producto!, price, counter),
                 child: Text(
                   '+',
                   style: TextStyle(
@@ -113,6 +120,7 @@ class ClientProductDetailPage extends StatelessWidget {
                 ),
                 style: ElevatedButton.styleFrom(
                     primary: Colors.white,
+                    minimumSize: Size(45, 37),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(25),
@@ -123,9 +131,9 @@ class ClientProductDetailPage extends StatelessWidget {
               ),
               Spacer(),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () => con.addToBag(producto!, price, counter),
                 child: Text(
-                  'Agregar   ${producto?.preUniPro ?? ''}',
+                  'Agregar   ${price.value}',
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 17
@@ -155,6 +163,21 @@ class ClientProductDetailPage extends StatelessWidget {
           fontWeight: FontWeight.bold,
           fontSize: 16,
           color: Colors.black
+        ),
+      ),
+    );
+  }
+
+  Widget _textStockProduct(){
+    return Container(
+      alignment: Alignment.centerLeft,
+      margin: EdgeInsets.only(top: 15, left: 30, right: 30),
+      child: Text(
+        'Stock: ' + producto!.stockPro.toString() ?? '',
+        style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+            color: Colors.black
         ),
       ),
     );

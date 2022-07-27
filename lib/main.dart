@@ -5,6 +5,7 @@ import 'package:flutter_ventas/src/models/user.dart';
 import 'package:flutter_ventas/src/pages/home/home_page.dart';
 import 'package:flutter_ventas/src/pages/list/client_products_list_page.dart';
 import 'package:flutter_ventas/src/pages/login/login_page.dart';
+import 'package:flutter_ventas/src/pages/orders/create/client_orders_create_page.dart';
 import 'package:flutter_ventas/src/pages/register/register_page.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -43,7 +44,8 @@ class _MyAppState extends State<MyApp> {
         GetPage(name: '/home', page: () => HomePage()),
         GetPage(name: '/pages/list/', page: () => ClientProductsListPage()),
         GetPage(name: '/client/profile/info', page: () => ClientProfileInfoPage()),
-        GetPage(name: '/client/home', page: () => ClientHomePage())
+        GetPage(name: '/client/home', page: () => ClientHomePage()),
+        GetPage(name: '/pages/orders/create', page: () => ClientOrdersCreatePage())
       ],
       theme: ThemeData(
         primaryColor: Colors.amber,

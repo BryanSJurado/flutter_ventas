@@ -12,6 +12,7 @@ class Producto {
   String? imgPro;
   String? marPro;
   int? stockPro;
+  int? quantity;
 
   Producto({
     this.idPro,
@@ -20,6 +21,7 @@ class Producto {
     this.imgPro,
     this.marPro,
     this.stockPro,
+    this.quantity
   });
 
   factory Producto.fromJson(Map<String, dynamic> json) => Producto(
@@ -29,6 +31,7 @@ class Producto {
     imgPro: json["imgPro"],
     marPro: json["marPro"],
     stockPro: json["stockPro"],
+    quantity: json["quantity"]
   );
 
   static List<Producto> fromJsonList(List<dynamic> jsonList){
@@ -55,5 +58,6 @@ class Producto {
     "imgPro": imgPro,
     "marPro": marPro,
     "stockPro": stockPro,
+    "quantity": quantity
   };
 }

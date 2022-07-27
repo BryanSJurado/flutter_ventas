@@ -27,6 +27,10 @@ class ClientProductsListController extends GetxController {
     return await productsProvider.findProductos();
   }
 
+  void goToOrderCreate(){
+    Get.toNamed('/pages/orders/create');
+  }
+
   void openBottomSheet(BuildContext context, Producto producto){
     showMaterialModalBottomSheet(
         context: context,
