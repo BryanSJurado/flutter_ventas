@@ -11,7 +11,7 @@ class ClientOrdersCreatePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Obx(() =>  Scaffold(
       bottomNavigationBar: Container(
         color: Color.fromRGBO(245, 245, 245, 1),
         height: 100,
@@ -36,7 +36,7 @@ class ClientOrdersCreatePage extends StatelessWidget {
           }).toList(),
       )
       : Container(),
-    );
+    ));
   }
 
   Widget _totalToPay(BuildContext context){
@@ -49,7 +49,7 @@ class ClientOrdersCreatePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                  'TOTAL: \$0.0',
+                  'TOTAL: \$${con.total.value}',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 17
@@ -109,7 +109,7 @@ class ClientOrdersCreatePage extends StatelessWidget {
 
   Widget _iconDelete(Producto producto){
     return IconButton(
-        onPressed: () {},
+        onPressed: () => con.deleteItem(producto),
         icon: Icon(
           Icons.delete,
           color: Colors.red,
@@ -134,7 +134,7 @@ class ClientOrdersCreatePage extends StatelessWidget {
     return Row(
       children: [
         GestureDetector(
-          onTap: () {},
+          onTap: () => con.removeItme(producto),
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 12, vertical: 7),
             decoration: BoxDecoration(
@@ -153,7 +153,7 @@ class ClientOrdersCreatePage extends StatelessWidget {
           child: Text('${producto.quantity ?? 0}'),
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () => con.addItme(producto),
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 12, vertical: 7),
             decoration: BoxDecoration(
