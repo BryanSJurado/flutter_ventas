@@ -20,7 +20,6 @@ class ClientProductsListController extends GetxController {
     categorias = [ new Categoria(
                                   idCat: '1',
                                   nomCat: 'Categoría1')];
-    //categorias.addAll(categorias);
   }
 
   Future<List<Producto>> getProductos() async{
