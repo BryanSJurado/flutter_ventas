@@ -1,7 +1,6 @@
 import 'package:flutter_ventas/src/Enviroment/environment.dart';
 import 'package:get/get.dart';
 import 'package:flutter_ventas/src/models/user.dart';
-
 import '../models/response_api.dart';
 
 class UsersProvider extends GetConnect{

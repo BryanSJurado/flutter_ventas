@@ -1,8 +1,6 @@
 import 'package:flutter_ventas/src/models/user.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:path/path.dart';
-
 import '../Enviroment/environment.dart';
 import '../models/producto.dart';
 import '../models/response_api.dart';
