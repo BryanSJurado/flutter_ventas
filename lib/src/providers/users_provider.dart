@@ -37,6 +37,5 @@ class UsersProvider extends GetConnect{
     }
     ResponseApi responseApi = ResponseApi.fromJson(response.body);
     return responseApi;
-
   }
 }
